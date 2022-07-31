@@ -11,7 +11,23 @@ namespace SuperHeroAPI.Controllers
     [Route("api/[controller]")]
     public class SuperHeroController : ControllerBase
     {
-        
+        [HttpGet]
+        // to see the sample in swagger, you need an ActionResult NOT the interface
+        public async Task<ActionResult<List<SuperHero>>> Get()
+        {
+            var heroes = new List<SuperHero>
+            {
+                new SuperHero {
+                    Id = 1,
+                    Name = "Spider Man",
+                    FirstName = "Peter",
+                    LastName = "Parker",
+                    Place = "New York City"
+                }
+            };
+
+            return Ok(heroes);
+        }
     }
 }
 
